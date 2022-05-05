@@ -9,4 +9,4 @@ const UserSchema = new mongoose.Schema({
   pin: { type: String, required: true },
 });
 
-export default mongoose.model('User', UserSchema);
+export const UserModel = mongoose.model('User', UserSchema);
