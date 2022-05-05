@@ -1,7 +1,11 @@
-import { Router } from 'express';
+import { Router } from "express";
 
-import { createNotification, getNotifications } from '../controllers';
+import { createNotification, getNotifications } from "../controllers";
+import { authorize } from "../middleware";
 
 const router = Router();
 
-router.route('/').get(getNotifications).post(createNotification);
+router
+  .route("/")
+  .get(authorize, getNotifications)
+  .post(authorize, createNotification);
