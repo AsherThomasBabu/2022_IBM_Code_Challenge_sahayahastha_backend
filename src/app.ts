@@ -1,27 +1,29 @@
-import express from 'express';
-import mongoose from 'mongoose';
-import cors from 'cors';
+import express from "express";
+import mongoose from "mongoose";
+import cors from "cors";
 
-import { OTPRoutes, UserRouter } from './routes';
+import { OTPRoutes, UserRouter } from "./routes";
+import { RepRoutes } from "./routes/RepRoutes";
 
-require('dotenv').config(); // setting env
+require("dotenv").config(); // setting env
 
 const app = express();
 
 app.use(
   cors({
-    origin: '*',
+    origin: "*"
   })
 );
 
-app.use('/otp', OTPRoutes);
-app.use('/user', UserRouter);
+app.use("/otp", OTPRoutes);
+app.use("/user", UserRouter);
+app.use("/rep", RepRoutes);
 
 app.listen(process.env.PORT || 3000, () => {
   mongoose
     .connect(process.env.MONGO_URI!)
     .then((res) => {
-      console.log('db connected');
+      console.log("db connected");
       console.log(
         `App listening on https://localhost:${process.env.PORT || 3000}`
       );
