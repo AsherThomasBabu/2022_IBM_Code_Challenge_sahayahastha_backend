@@ -17,11 +17,6 @@ app.use(
 app.use('/otp', OTPRoutes);
 app.use('/user', UserRouter);
 
-/**
- * - notification create
- * - issue no_of_created
- */
-
 app.listen(process.env.PORT || 3000, () => {
   mongoose
     .connect(process.env.MONGO_URI!)
