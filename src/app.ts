@@ -14,6 +14,7 @@ app.use(
     origin: "*"
   })
 );
+app.use(express.json()); // for parsing request body
 
 app.use("/otp", OTPRoutes);
 app.use("/user", UserRouter);
