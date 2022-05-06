@@ -2,8 +2,7 @@ import express from "express";
 import mongoose from "mongoose";
 import cors from "cors";
 
-import { OTPRoutes, UserRouter } from "./routes";
-import { RepRoutes } from "./routes/RepRoutes";
+import { OTPRouter, RepRouter, UserRouter } from "./routes";
 
 require("dotenv").config(); // setting env
 
@@ -16,9 +15,14 @@ app.use(
 );
 app.use(express.json()); // for parsing request body
 
-app.use("/otp", OTPRoutes);
-app.use("/user", UserRouter);
-app.use("/rep", RepRoutes);
+app.use("/api/v1/otp", OTPRouter);
+app.use("/api/v1/user", UserRouter);
+app.use("/api/v1/rep", RepRouter);
+
+process.on('SIGINT|SIGKILL|exit', () => {
+  console.log(`Application is exited with status code`)
+  mongoose.disconnect()
+})
 
 app.listen(process.env.PORT || 3000, () => {
   mongoose
