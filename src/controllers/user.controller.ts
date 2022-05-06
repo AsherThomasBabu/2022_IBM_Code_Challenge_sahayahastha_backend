@@ -6,7 +6,8 @@ import { UserModel } from "../models";
 import { RegisterUserType } from "../types";
 
 /**
- *
+ * @route /api/v1/user
+ * @method POST
  * @description creating a user
  * @public
  */
@@ -27,12 +28,13 @@ export const createUser = expressAsyncHandler(
       pin_code
     });
     const token = sign(''+user._id, process.env.JWT_SECRET!);
-    res.status(200).json({ token, ...user });
+    res.status(200).json({ token, user });
   }
 );
 
 /**
- * @route /user/:id
+ * @route api/v1/user/:id
+ * @method GET 
  * @description getting a user from an id
  * @private
  */
