@@ -1,7 +1,7 @@
-import { Request } from "express";
 import expressAsyncHandler from "express-async-handler";
-import { sign } from "jsonwebtoken";
 
+import { Request } from "express";
+import { sign } from "jsonwebtoken";
 import { UserModel } from "../models";
 import { RegisterUserType } from "../types";
 
@@ -26,7 +26,7 @@ export const createUser = expressAsyncHandler(
       district,
       pin_code
     });
-    const token = sign(user._id, process.env.JWT_SECRET!);
+    const token = sign(''+user._id, process.env.JWT_SECRET!);
     res.status(200).json({ token, ...user });
   }
 );

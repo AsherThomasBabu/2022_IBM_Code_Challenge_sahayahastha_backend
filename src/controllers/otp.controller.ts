@@ -1,10 +1,10 @@
-import { Request } from "express";
 import expressAsyncHandler from "express-async-handler";
-import { sign } from "jsonwebtoken";
 import otpGenerator from "otp-generator";
-
-import { UserModel } from "../models";
 import otpModel from "../models/otp.model";
+
+import { Request } from "express";
+import { sign } from "jsonwebtoken";
+import { UserModel } from "../models";
 import { SendOTPType, VerifyOTPType } from "../types";
 
 const ftsms = require("fast-two-sms"); // no types provided by the package
@@ -35,6 +35,7 @@ export const sendOTP = expressAsyncHandler(
 
     await otpModel.create({ phone: req.body.phone, otp: otp });
     res.status(200);
+    res.send({"message": "OTP successfully send"})
   }
 );
 
