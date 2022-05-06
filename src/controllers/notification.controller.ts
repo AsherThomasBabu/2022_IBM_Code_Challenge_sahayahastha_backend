@@ -1,8 +1,6 @@
-// get notifications
-// post notidications
+import expressAsyncHandler from 'express-async-handler';
 
 import { Request } from 'express';
-import expressAsyncHandler from 'express-async-handler';
 import { NotificationModel } from '../models';
 import { NotificationType } from '../types';
 

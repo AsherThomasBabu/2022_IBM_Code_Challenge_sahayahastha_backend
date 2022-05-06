@@ -9,3 +9,5 @@ router
   .route("/")
   .get(authorize, getNotifications)
   .post(authorize, createNotification);
+
+export const NotificationRouter = router;
