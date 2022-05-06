@@ -6,7 +6,7 @@ const UserSchema = new mongoose.Schema({
   house_name: { type: String, required: true },
   city: { type: String, required: true },
   district: { type: String, required: true },
-  pin: { type: String, required: true },
+  pin_code: { type: String, required: true },
 });
 
 export const UserModel = mongoose.model('User', UserSchema);
