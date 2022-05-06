@@ -57,8 +57,9 @@ export const verifyOTP = expressAsyncHandler(
 
     if (!user) {
       res.status(200).send({ existing: false });
+    } else {
+      const token = sign(''+user._id, process.env.JWT_SECRET!);
+      res.status(200).send({ existing: true, token, ...user });
     }
-    const token = sign(user._id, process.env.JWT_SECRET!);
-    res.status(200).send({ existing: true, token, ...user });
   }
 );
